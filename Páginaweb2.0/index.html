@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.6.0/jspdf.umd.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MM-Store</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!--icono a la pagina-->
+    <link rel="icon" href="./imagenes/icon_page.png" type="icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="./imagenes/banner.jpg" alt="Venta de Periféricos" class="banner">
+    </header>
+    <nav>
+        <div class="hamburguesa" onclick="toggleMenu()">
+            <div class="linea"></div>
+            <div class="linea"></div>
+            <div class="linea"></div>
+        </div>
+    
+        <ul id="menuDesplegable" class="desplegable-mobile">
+            <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="#productos"><i class="fas fa-box"></i> Productos</a></li>
+            <li><a href="#carrito"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
+            <li><a href="#nosotros" id="nosotrosLink"><i class="fas fa-users"></i> Acerca de nosotros</a></li>
+            <li><a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
+            <li>
+                <a href="#ofertas">Ofertas <span class="flecha">&#9660;</span></a>
+                <div class="desplegable">
+                    <a href="#">Combo Gamer Ultimate</a>
+                    <a href="#">Descuento del 20% en Teclados RGB</a>
+                    <a href="#">20% de Descuento en Teclados Gaming Iluminados</a>
+                </div>
+            </li>
+            <li class="busqueda-container">
+                <label for="busqueda">Realiza tu búsqueda :</label>
+                <input type="text" id="busqueda" placeholder="Buscar Periféricos">
+                <button onclick="buscarPerifericos()"><i class="fas fa-search"></i> Buscar</button>
+            </li>            
+        </ul>
+    </nav>
+    
+    <section id="productos">
+        <h2>PRODUCTOS DISPONIBLES</h2>
+
+        <div class="productos-carrito" id="productos-lista">
+            <!-- Lista de productos se mostrará aquí -->
+            <div class="producto">
+                <img src="./imagenes/teclado.jpg" alt="Teclado">
+                <h3>Teclado mecánico</h3>
+                <p><b>Precio: $50</b></p>
+                <button onclick="agregarAlCarrito('Teclado mecánico', 50)">
+                    <i class="bi bi-cart4"></i>
+                    <strong>Agregar al carrito</strong></button>
+            </div>
+            <div class="producto">
+                <img src="./imagenes/raton.jpg" alt="Ratón">
+                <h3>Ratón inalámbrico</h3>
+                <p><b>Precio: $40</b></p>
+                <button onclick="agregarAlCarrito('Ratón inalámbrico', 40)">
+                    <i class="bi bi-cart4"></i>
+                    <strong>Agregar al carrito</strong></button>
+            </div>
+            <div class="producto">
+                <img src="./imagenes/fuentepoder.jpg" alt="Fuente de poder">
+                <h3>Fuente de poder 600W</h3>
+                <p><b>Precio: $200</b></p>
+                <button onclick="agregarAlCarrito('Fuente de poder', 200)">
+                    <i class="bi bi-cart4"></i>
+                    <strong>Agregar al carrito</strong></button>
+            </div>
+            <div class="producto">
+                <img src="./imagenes/auriculares.jpg" alt="Auriculares">
+                <h3>Auriculares Bluetooth</h3>
+                <p><b>Precio: $60</b></p>
+                <button onclick="agregarAlCarrito('Auriculares Bluetooth', 60)">
+                    <i class="bi bi-cart4"></i>
+                    <strong>Agregar al carrito</strong></button>
+            </div>
+            <div class="producto">
+                <img src="./imagenes/monitor.jpg" alt="Monitor">
+                <h3>Monitor 24 pulgadas</h3>
+                <p><b>Precio: $200</b></p>
+                <button onclick="agregarAlCarrito('Monitor 24 pulgadas', 200)">
+                    <i class="bi bi-cart4"></i>
+                    <strong>Agregar al carrito</strong></button>
+            </div>
+            <div class="producto">
+                <img src="./imagenes/teclado_inalambrico.jpg" alt="Teclado inalámbrico">
+                <h3>Teclado inalámbrico</h3>
+                <p><b>Precio: $45</b></p>
+                <button onclick="agregarAlCarrito('Teclado inalámbrico', 45)">
+                    <i class="bi bi-cart4"></i>
+                    <strong>Agregar al carrito</strong></button>
+            </div>
+            <div class="producto">
+                <img src="./imagenes/altavoces.jpg" alt="Altavoces">
+                <h3>Altavoces Bluetooth</h3>
+                <p><b>Precio: $70</b></p>
+                <button onclick="agregarAlCarrito('Altavoces Bluetooth', 70)">
+                    <i class="bi bi-cart4"></i>
+                    <strong>Agregar al carrito</strong></button>
+            </div>
+            <div class="producto">
+                <img src="./imagenes/mouse_inalambrico.jpg" alt="Mouse Inalámbrico">
+                <h3>Mouse Inalámbrico</h3>
+                <p><b>Precio: $30</b></p>
+                <button onclick="agregarAlCarrito('Mouse Inalámbrico', 30)">
+                    <i class="bi bi-cart4"></i>
+                    <strong>Agregar al carrito</strong></button>
+            </div>
+            <div class="producto">
+                <img src="./imagenes/pantalla_gamer.jpg" alt="Pantalla Gamer">
+                <h3>Pantalla Gamer 27 pulgadas</h3>
+                <p><b>Precio: $300</b></p>
+                <button onclick="agregarAlCarrito('Pantalla Gamer 27 pulgadas', 300)">
+                    <i class="bi bi-cart4"></i>
+                    <strong>Agregar al carrito</strong></button>
+            </div>
+            <div class="producto">
+                <img src="./imagenes/RTX3060.jpg" alt="Tarjeta Grafica">
+                <h3>Tarjeta gráfica</h3>
+                <p><b>Precio: $800</b></p>
+                <button onclick="agregarAlCarrito('Tarjeta Grafica', 800)">
+                    <i class="bi bi-cart4"></i>
+                    <strong>Agregar al carrito</strong></button>
+            </div>
+            <div class="producto">
+                <img src="./imagenes/CaseCorsair.jpg" alt="Case Gamer">
+                <h3>Case Gamer</h3>
+                <p><b>Precio: $450</b></p>
+                <button onclick="agregarAlCarrito('Case Gamer', 450)">
+                    <i class="bi bi-cart4"></i>
+                    <strong>Agregar al carrito</strong></button>
+            </div>
+            <div class="producto">
+                <img src="./imagenes/Refrigeracción.jpg" alt="Refrigeracción NZXT">
+                <h3>Refrigeración Liquida</h3>
+                <p><b>Precio: $500</b></p>
+                <button onclick="agregarAlCarrito('Tarjeta Grafica', 500)">
+                    <i class="bi bi-cart4"></i>
+                    <strong>Agregar al carrito</strong></button>
+            </div>
+            <div class="producto">
+                <img src="./imagenes/SSDm2.jpg" alt="SSD Kingston 500GB">
+                <h3>SSD m.2 500GB</h3>
+                <p>Precio: $215</p>
+                <button onclick="agregarAlCarrito('SSD Kingston 500GB', 215)">
+                    <i class="bi bi-cart4"></i>
+                    <strong>Agregar al carrito</strong></button>
+            </div>
+            <div class="producto">
+                <img src="./imagenes/mousepad.webp" alt="Mouse Pad Anime">
+                <h3>mousepad Anime</h3>
+                <p><b>Precio: $120</b></p>
+                <button onclick="agregarAlCarrito('Mouse Pa Anime', 120)">
+                    <i class="bi bi-cart4"></i>
+                    <strong>Agregar al carrito</strong></button>
+            </div>
+            <div class="producto">
+                <img src="./imagenes/TecladoRazer.jpg" alt="Teclado Razer Huntsman">
+                <h3>Teclado Razer Huntsman</h3>
+                <p><b>Precio: $430</b></p>
+                <button onclick="agregarAlCarrito('Teclado Razer Huntsman', 430)">
+                    <i class="bi bi-cart4"></i>
+                    <strong>Agregar al carrito</strong></button>
+            </div>
+            <div class="producto">
+                <img src="./imagenes/audifonosLogitech" alt="Auriculares Logitech G733">
+                <h3>Auriculares Logitech G733</h3>
+                <p><b>Precio: $370</b></p>
+                <button onclick="agregarAlCarrito('Auriculares Logitech G733', 370)">
+                    <i class="bi bi-cart4"></i>
+                    <strong>Agregar al carrito</strong></button>
+            </div>
+        </div>
+
+        <div class="paginacion" id="paginacion">
+        <!-- Números de página se mostrarán aquí -->
+        </div>
+    </section>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Sobre nosotros</h2>
+            <p>En un mundo cada vez más digital, la venta en línea se ha convertido en un pilar esencial para las empresas que buscan ampliar su alcance y ofrecer una experiencia de compra práctica y eficiente. Nuestra compañía desarrolla una innovadora plataforma web destinada a la venta de periféricos de computadora, diseñada para facilitar la búsqueda, compra y entrega de productos desde la comodidad del hogar. Este proyecto no solo busca alcanzar metas comerciales, sino que también tiene un impacto significativo en aspectos sociales, culturales y políticos. Desde una perspectiva social, el sistema propuesto busca mejorar la accesibilidad al ofrecer una opción de compra más fácil, beneficiando especialmente a personas con movilidad reducida o en áreas con acceso limitado a productos. Además, contribuye a la inclusión digital, reduciendo la brecha entre diferentes sectores de la sociedad. Para nuestra empresa, el sistema web tiene eficiencia operativa al automatizar procesos de inventario, facturación y gestión de pedidos. Esto no solo ayuda a reducir el riesgo de errores humanos, sino que también permite una respuesta más rápida y efectiva a las demandas del mercado. La capacidad de analizar datos de ventas en tiempo real facilita la toma de decisiones estratégicas y la identificación de tendencias de consumo, lo que puede guiar el desarrollo de nuevas líneas de productos o la mejora de los existentes.</p>
+        </div>
+    </div>
+
+<!-- Mini ventana de contacto -->
+<div id="contactModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="contactClose">&times;</span>
+        <h2>Contáctanos</h2>
+        <p><i class="fas fa-phone-alt"></i> 📞 Teléfono: +51 987 656 844 // +51 912 828 684</p>
+        <p>Llamadas disponibles de lunes a viernes, de 9:00 a 18:00</p>
+        <p><i class="fas fa-comments"></i> 💬 WhatsApp:</p>
+        <div class="whatsapp-buttons">
+            <a href="https://wa.me/51987656844?text=Hola+buenas+tardes+gracias+por+contactarte+a+Blitzzz+Store+en+qu%C3%A9+te+podemos+ayudar+%F0%9F%98%81" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp 1
+            </a>
+            <a href="https://wa.me/51912828684?text=Hola+bienvenido+a+Blitzzz+Store+cual+es+su+consulta+%F0%9F%98%8E" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp 2
+            </a>
+        </div>
+        <p>Disponibles para chat de lunes a viernes, de 9:00 a 18:00</p>
+    </div>
+</div>
+
+<div id="carrito">
+    <div class="carrito-header">
+        <h2>Carrito de Compras</h2>
+        <span id="carrito-cerrar" onclick="toggleCarrito()">&#10006;</span> <!-- Icono de cerrar -->
+    </div>
+    <ul id="carrito-lista">
+        <!-- Lista de productos agregados al carrito -->
+    </ul>
+    <p>Total: <span id="total">0</span></p>
+    <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+    <button class="generar-boleta" onclick="pagar()">Pagar</button>
+</div>
+
+<!-- Modal para carrito vacío -->
+<div id="cartEmptyModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="cartEmptyClose">&times;</span>
+        <h2>Carrito Vacío</h2>
+        <p>No hay productos en el carrito. Por favor, agrega productos antes de pagar.</p>
+        <button onclick="cerrarModal('cartEmptyModal')">Cerrar</button>
+    </div>
+</div>
+
+
+<!-- Icono de carrito flotante -->
+<div id="carrito-icon" onclick="toggleCarrito()">
+    <i class="fas fa-shopping-cart"></i>
+    <span id="carrito-cantidad">0</span> <!-- Cantidad de productos -->
+</div>
+
+</div>
+    <script src="script.js"></script>
+    
+    <script>
+        let todosLosProductos = [];
+    
+        function toggleMenu() {
+            var menu = document.getElementById('menuDesplegable');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+    
+        function buscarPerifericos() {
+            let input = document.getElementById('busqueda').value.toLowerCase();
+            let resultados = todosLosProductos.filter(producto => {
+                let nombreProducto = producto.querySelector('h3').textContent.toLowerCase();
+                return nombreProducto.includes(input);
+            });
+            mostrarProductosEnPagina(1, resultados);
+            generarNavegacionNumerica(resultados);
+        }
+    
+        function mostrarProductosEnPagina(pagina, productosFiltrados = null) {
+            let productosLista = document.getElementById('productos-lista');
+            let productos = productosFiltrados || todosLosProductos;
+            productosLista.innerHTML = '';
+            let inicio = (pagina - 1) * 8;
+            let fin = inicio + 8;
+            let productosPagina = productos.slice(inicio, fin);
+            productosPagina.forEach(producto => {
+                productosLista.appendChild(producto);
+            });
+        }
+    
+        function generarNavegacionNumerica(productosFiltrados = null) {
+            let paginacion = document.getElementById('paginacion');
+            let productos = productosFiltrados || todosLosProductos;
+            let numPaginas = Math.ceil(productos.length / 8);
+            paginacion.innerHTML = '';
+            for (let i = 1; i <= numPaginas; i++) {
+                let botonPagina = document.createElement('button');
+                botonPagina.textContent = i;
+                botonPagina.addEventListener('click', function() {
+                    mostrarProductosEnPagina(i, productosFiltrados);
+                });
+                paginacion.appendChild(botonPagina);
+            }
+        }
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            let productosLista = document.getElementById('productos-lista');
+            todosLosProductos = Array.from(productosLista.querySelectorAll('.producto'));
+            mostrarProductosEnPagina(1, todosLosProductos);
+            generarNavegacionNumerica(todosLosProductos);
+        });
+    </script>
+    
+    <!--descargar boleta-->
+
+    <!-- Mensaje de carga -->
+    <div id="loadingMessage">¡Descargando su PDF...!</div>
+    
+</body>
+</html>
+
+<body>
+   
+   <!-- Formulario de pago -->
+   <div id="formularioPago" class="modal">
+       <div class="modal-content">
+           <span class="close" id="formularioClose">&times;</span>
+           <h2>Información Envio</h2>
+           <form id="pagoForm">
+               <label for="nombre">Nombre:</label>
+               <input type="text" id="nombre" name="nombre" required><br><br>
+               <label for="dni">DNI:</label>
+               <input type="text" id="dni" name="dni" required><br><br>
+               <label for="telefono">Teléfono:</label>
+               <input type="tel" id="telefono" name="telefono" required><br><br>
+               <label for="direccion">Dirección:</label>
+               <input type="text" id="direccion" name="direccion" required><br><br>
+               <button type="button" onclick="generarBoleta()">Realizar Pedido</button>
+           </form>
+       </div>
+   </div>
+
+   <script>
+       document.addEventListener('DOMContentLoaded', function() {
+           // Función para mostrar el formulario de pago
+           function pagar() {
+               document.getElementById('formularioPago').style.display = 'block';
+           }
+
+           // Función para cerrar el formulario de pago
+           document.getElementById('formularioClose').onclick = function() {
+               document.getElementById('formularioPago').style.display = 'none';
+           }
+
+           // Función para generar la boleta en PDF
+           function generarBoleta() {
+               const {jsPDF} = window.jsPDF;
+
+               // Recoger datos del formulario
+               const nombre = document.getElementById('nombre').value;
+               const dni = document.getElementById('dni').value;
+               const telefono = document.getElementById('telefono').value;
+               const direccion = document.getElementById('direccion').value;
+
+               // Crear el documento PDF
+               const doc = new jsPDF();
+               let y = 10; // Posición inicial para el texto en el PDF
+
+               // Añadir los datos del comprador al PDF
+               doc.text(`Nombre: ${nombre}`, 10, y);
+               y += 10;
+               doc.text(`DNI: ${dni}`, 10, y);
+               y += 10;
+               doc.text(`Teléfono: ${telefono}`, 10, y);
+               y += 10;
+               doc.text(`Dirección: ${direccion}`, 10, y);
+               y += 20; // Espacio adicional para separar los datos del carrito
+
+               // Añadir los detalles del carrito
+               doc.text("Productos comprados:", 10, y);
+               y += 10;
+
+               const carritoLista = document.getElementById('carrito-lista').children;
+               let total = 0;
+
+               for (let i = 0; i < carritoLista.length; i++) {
+                   const nombreProducto = carritoLista[i].querySelector('h3').textContent;
+                   const precioProducto = parseFloat(carritoLista[i].querySelector('p').textContent.replace('$', '').trim());
+                   total += precioProducto;
+
+                   doc.text(`${nombreProducto} - $${precioProducto.toFixed(2)}`, 10, y);
+                   y += 10; // Espaciado entre productos
+               }
+
+               // Añadir el total al final
+               y += 10;
+               doc.text(`Total: $${total.toFixed(2)}`, 10, y);
+
+               // Descargar el archivo PDF
+               doc.save('boleta.pdf');
+
+               // Cerrar el formulario después de generar el PDF
+               document.getElementById('formularioPago').style.display = 'none';
+           }
+
+           // Asignar la función al botón "Pagar"
+           document.querySelector('button[onclick="pagar()"]').addEventListener('click', pagar);
+           // Asignar la función al botón "Generar Boleta"
+           document.querySelector('button[onclick="generarBoleta()"]').addEventListener('click', generarBoleta);
+       });
+   </script>
+</body>
+</html>
