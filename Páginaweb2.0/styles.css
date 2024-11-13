@@ -1,0 +1,964 @@
+/* Reset de CSS para asegurar consistencia entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales del cuerpo */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 0;
+    margin: 0;
+}
+
+/* Encabezado con imagen */
+header {
+    padding: 0;
+    text-align: center;
+    position: relative;
+}
+
+header img.banner {
+    width: 100%;
+    height: 80vh;
+    display: block;
+}
+
+/* Barra de navegación - actualizado*/
+nav {
+    background-color: #01bafb;
+    color: #fff;
+}
+
+.hamburguesa {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburguesa .linea {
+    width: 25%;
+    height: 3px;
+    background: #fff;
+    margin: 5px 0;
+}
+
+/*VALOR AGREGADO*/
+#menuDesplegable{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#menuDesplegable li{
+    position: relative;
+    display: inline-block;
+}
+
+#menuDesplegable a{
+    text-decoration: none;
+    display: block;
+    padding: 10px 52px;
+    font-size: 17px;
+    background: #01bafb;
+    margin-top: -10px;
+    border-radius: 10px;
+}
+
+#menuDesplegable a:hover {
+    transition: 0.4s ease all;
+    background: #555555dc;
+}
+
+.desplegable{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #f1f1f1;
+    min-width: 200px;
+    z-index: 1;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+.desplegable a{
+    color: #000;
+    padding: 10px 20px;
+    display: block;
+}
+
+.desplegable a:hover {
+    background: #ddd;
+}
+
+#menuDesplegable li:hover .desplegable{
+    display: block;
+}
+
+/*busqueda*/
+.busqueda-container{
+    display: flex;
+    align-items: center;
+}
+
+#busqueda{
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    font-size: 15px;
+}
+
+.busqueda-container input{
+    height: 25px;
+}
+
+.busqueda-container button {
+    padding: 10px 10px;
+    border: none;
+    color: #fff;
+    background: #555;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 17px;
+}
+
+.busqueda-container button:hover {
+    background: #777;
+}
+
+#loadingMessage {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 1.5em;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+}
+
+@media (max-width: 768px) {
+    .hamburguesa {
+        display: block;
+    }
+
+    #menuDesplegable {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #menuDesplegable li {
+        display: block;
+        width: 100%;
+    }
+
+    #menuDesplegable li:hover .desplegable {
+        position: relative;
+    }
+
+    .desplegable-mobile {
+        display: block;
+    }
+
+    .desplegable-mobile .desplegable {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        box-shadow: none;
+    }
+
+    .busqueda-container {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    #busqueda {
+        width: 100%;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+    
+    .busqueda-container button {
+        width: 100%;
+        border-radius: 5px;
+    }
+}
+
+/* Sección de productos */
+#productos {
+    padding: 20px;
+    background-color: #fff;
+}
+
+#productos h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #01bafb;
+    font-weight: 190px;
+    padding-bottom: 10px;
+}
+
+.productos-carrito {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.producto {
+    background: #ffffff;
+    border: 1px solid #868af0;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: calc(25% - 20px);
+    padding: 10px;
+    text-align: center;
+}
+
+.producto img {
+    width: 80%;
+    height: auto;
+    margin-bottom: 5px;
+}
+
+.producto h3 {
+    font-size: 1.5em;
+    color: #1f3b77;
+    margin-bottom: 10px;
+}
+
+.producto p {
+    margin-bottom: 20px;
+}
+
+.producto button {
+    width: 32vh;
+    padding: 10px 20px;
+    font-size: 15px;
+    background-color: #31e743b0;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+.producto button:hover {
+    transition: 0.4s ease all;
+    box-shadow: 0 0 5px black;
+    background-color: #2980b9;
+    color: black;
+}
+
+.producto button i{
+    font-size: 20px;
+}
+
+/* Carrito */
+#carrito {
+    padding: 20px;
+}
+
+#carrito h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    border-bottom: 5px solid #333;
+    padding-bottom: 5px;
+}
+
+#carrito ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+#carrito ul li {
+    margin-bottom: 5px;
+}
+
+
+/* Paginación */
+.paginacion {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.paginacion button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    background-color: #ddd;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.paginacion button:hover {
+    background-color: #ccc;
+}
+
+
+/*484*/
+.sobre-nosotros {
+    max-width: 800px; /* Establece un ancho máximo para el contenedor */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    background-color: #bbd331dc;
+    padding: 40px 20px; /* Agrega un espacio interno al contenedor */
+  }
+  
+  .sobre-nosotros h1 {
+    font-size: 3rem; /* Aumenta el tamaño de fuente del título */
+    margin-bottom: 2rem; /* Agrega espacio entre el título y el párrafo */
+    text-align: center; /* Centra el título */
+  }
+  
+  .sobre-nosotros p {
+    font-size: 1.5rem; /* Aumenta el tamaño de fuente del párrafo */
+    line-height: 2; /* Aumenta el espacio entre líneas */
+    margin: auto;
+    max-width: 150%;
+    margin-bottom: 1rem; /* Agrega espacio entre párrafos */
+    text-align: justify;
+  }
+
+  /*contacto*/
+  .contacto {
+    background: url(./imagenes/cheems.jpg);
+    background-size: cover;
+    background-attachment: local;
+    position: absolute; 
+    padding: 80px 70px; /* Agrega espacio interno a la sección */
+    text-align: center; /* Centra el contenido horizontalmente */
+  }
+  
+  .contacto h1 {
+    font-size: 2.2rem; /* Aumenta el tamaño de fuente del título */
+    font-weight: 700; /* Aplica un peso de letra más grueso al título */
+    margin-bottom: 1.5rem; /* Agrega espacio debajo del título */
+  }
+  
+  .contacto p {
+    font-size: 1.1rem; /* Aumenta el tamaño de fuente del párrafo */
+    line-height: 1.6; /* Aumenta el espacio entre líneas */
+    margin-bottom: 2rem; /* Agrega espacio debajo del párrafo */
+  }
+  
+  .contacto p a {
+    color: #007bff; /* Cambia el color del enlace de Whatsapp */
+    text-decoration: none; /* Quita el subrayado del enlace */
+  }
+  
+  .contacto p a:hover {
+    text-decoration: underline; /* Agrega un subrayado al enlace cuando se pasa el cursor sobre él */
+  }
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+    nav .hamburguesa {
+        display: flex;
+    }
+
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 50px;
+        right: 20px;
+        background-color: #3498db;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        transform-origin: top right;
+        transform: scaleY(0);
+        transition: transform 0.3s ease-out;
+    }
+
+    nav ul.active {
+        display: flex;
+        transform: scaleY(1);
+    }
+
+    nav ul li {
+        margin-bottom: 10px;
+    }
+
+    .producto {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .producto {
+        width: 100%;
+    }
+
+    nav .hamburguesa {
+        right: 10px;
+    }
+
+    nav ul {
+        right: 10px;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: left;
+    }
+
+    nav ul li a,
+    nav ul li label,
+    nav ul li input,
+    nav ul li button {
+        width: 100%;
+        box-sizing: border-box;
+        margin: 5px 0;
+    }
+
+
+    .sobre-nosotros {
+        max-width: 800px; /* Establece un ancho máximo para el contenedor */
+        margin:  auto; /* Centra el contenedor horizontalmente */
+        padding: 20px 20px; /* Agrega un espacio interno al contenedor */
+      }
+      
+      .sobre-nosotros h1 {
+        font-size: 3rem; /* Aumenta el tamaño de fuente del título */
+        margin-bottom: 2rem; /* Agrega espacio entre el título y el párrafo */
+        text-align: center; /* Centra el título */
+      }
+      
+      .sobre-nosotros p {
+        font-size: 1.5rem; /* Aumenta el tamaño de fuente del párrafo */
+        line-height: 1; /* Aumenta el espacio entre líneas */
+        
+        margin-bottom: 1.2rem; /* Agrega espacio entre párrafos */
+      }
+}
+
+/* Estilos generales para el cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos para la mini ventana */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.close {
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+/* Estilos del contenido de la mini ventana */
+.modal-content h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 24px;
+}
+
+.modal-content p {
+    line-height: 1.6;
+    color: #666;
+}
+
+/* Estilos adicionales para el menú */
+nav {
+    background: #333;
+    color: #fff;
+    padding: 10px 30px;
+}
+
+ul#menuDesplegable {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul#menuDesplegable li {
+    display: inline-block;
+    margin-right: 20px;
+    margin-top: 15px;
+}
+
+ul#menuDesplegable a {
+    color: #333;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.5s;
+}
+
+ul#menuDesplegable a:hover {
+    color: #ff9f00;
+}
+
+/* Estilos para el menú desplegable */
+.desplegable-mobile {
+    display: none;
+}
+
+.hamburguesa {
+    display: none;
+}
+
+/* Estilos para el contenedor de búsqueda */
+.busqueda-container {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.busqueda-container input {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    margin-left: 15px;
+}
+
+.busqueda-container button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff9f00;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.busqueda-container button i {
+    margin-right: 5px;
+}
+
+.busqueda-container button:hover {
+    background-color: #e68a00;
+}
+
+/* Estilos para el banner */
+.banner {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Estilos generales para la mini ventana */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6); /* Color de fondo con opacidad */
+}
+
+/* Contenedor de la mini ventana */
+.modal-content {
+    background-color: #ffffff;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    width: 90%;
+    max-width: 700px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Estilo del botón de cerrar */
+.close {
+    color: #555;
+    font-size: 32px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+}
+
+/* Estilo del encabezado */
+.modal-content h2 {
+    margin-top: 0;
+    font-size: 26px;
+    color: #333;
+    font-weight: 600;
+    border-bottom: 2px solid #f5f5f5;
+    padding-bottom: 10px;
+}
+
+/* Estilo del párrafo */
+.modal-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #666;
+    text-align: justify;
+}
+
+/* Añadir espacio y padding */
+.modal-content {
+    padding: 40px;
+}
+
+.modal-content h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.modal-content p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+}
+
+
+/* Estilos para los botones de WhatsApp */
+.whatsapp-buttons {
+    margin: 20px 0;
+}
+
+.whatsapp-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    background-color: #25D366; /* Color de WhatsApp */
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.whatsapp-btn i {
+    margin-right: 8px;
+}
+
+.whatsapp-btn:hover {
+    background-color: #1ebe50; /* Color más oscuro al pasar el cursor */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para el carrito de compras */
+#carrito {
+    position: fixed; /* Fija el carrito en la ventana */
+    right: 20px; /* Coloca el carrito a la derecha */
+    bottom: 20px; /* Coloca el carrito en la parte inferior */
+    width: 300px; /* Ancho del carrito */
+    padding: 20px; /* Espaciado interno */
+    background-color: #f1f1f1f5; /* Color de fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+    z-index: 1000; /* Asegura que el carrito esté encima de otros elementos */
+    display: none; /* Oculta el carrito inicialmente */
+    transition: transform 0.3s ease; /* Transición suave para la visibilidad */
+}
+
+/* Estilo para el encabezado del carrito */
+#carrito .carrito-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    margin-bottom: 10px; /* Espaciado inferior */
+}
+
+/* Estilo para el icono de cerrar del carrito */
+#carrito-cerrar {
+    font-size: 2em;
+    cursor: pointer;
+    color: #e74c3c; /* Color rojo para el icono de cerrar */
+}
+
+/* Estilo para el ícono flotante del carrito */
+#carrito-icon {
+    position: fixed; /* Fija el icono en la ventana */
+    right: 20px; /* Coloca el icono a la derecha */
+    bottom: 20px; /* Coloca el icono en la parte inferior */
+    width: 60px; /* Ancho del icono */
+    height: 60px; /* Alto del icono */
+    background-color: #27ae60; /* Color de fondo verde */
+    color: #fff; /* Color del ícono blanco */
+    border-radius: 50%; /* Forma circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+    font-size: 1.5em; /* Tamaño del ícono */
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+/* Cambia el color de fondo del ícono del carrito al pasar el ratón por encima */
+#carrito-icon:hover {
+    background-color: #2ecc71; /* Color de fondo verde más claro */
+}
+
+/* Cantidad de productos en el ícono del carrito */
+#carrito-cantidad {
+    position: absolute;
+    top: -10px; /* Posición superior relativa */
+    right: -10px; /* Posición derecha relativa */
+    background-color: #e74c3c; /* Fondo rojo */
+    color: #fff; /* Texto blanco */
+    border-radius: 50%; /* Forma circular */
+    padding: 2px 8px; /* Espaciado interno */
+    font-size: 0.8em; /* Tamaño del texto */
+}
+
+/* Estilo para la lista de productos en el carrito */
+#carrito-lista {
+    list-style: none; /* Elimina los puntos de lista */
+    padding: 0; /* Elimina el padding predeterminado */
+    margin: 0 0 20px 0; /* Espaciado en la parte inferior */
+}
+
+/* Estilo para cada ítem en la lista del carrito */
+#carrito-lista li {
+    display: flex; /* Utiliza flexbox para alinear los elementos */
+    justify-content: space-between; /* Espaciado entre el nombre del producto y el botón */
+    align-items: center; /* Alineación vertical */
+    padding: 10px 0; /* Espaciado interno vertical */
+    border-bottom: 1px solid #eee; /* Línea de separación entre productos */
+    color: #000000; /* Color del texto */
+}
+
+/* Estilo para el botón de eliminación */
+#carrito-lista button {
+    background-color: #01bafb; /* Color de fondo rojo */
+    color: #e0d9d9; /* Color del texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 5px 10px; /* Espaciado interno */
+    cursor: pointer; /* Cambia el cursor a mano */
+    font-size: 0.9em; /* Tamaño del texto */
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+/* Cambia el color de fondo del botón al pasar el ratón por encima */
+#carrito-lista button:hover {
+    background-color: #c0392b; /* Color de fondo rojo más oscuro */
+}
+
+/* Estilo para el total del carrito */
+#carrito p {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0 0 20px 0; /* Espaciado en la parte inferior */
+    color: #333; /* Color del texto */
+}
+
+/* Estilo para los botones de vaciar carrito y pagar */
+#carrito button {
+    width: 60%; /* Ancho completo del botón */
+    padding: 10px;
+    margin-left: 50px;
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    color: #fff; /* Color del texto blanco */
+    font-size: 1em; /* Tamaño del texto */
+    cursor: pointer; /* Cambia el cursor a mano */
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+    margin-top: 10px; /* Espaciado en la parte superior */
+}
+
+/* Botón de vaciar carrito */
+#carrito button:nth-of-type(1) {
+    background-color: #af3f3c; /* Color de fondo naranja */
+}
+
+/* Cambia el color de fondo del botón de vaciar carrito al pasar el ratón por encima */
+#carrito button:nth-of-type(1):hover {
+    transition: 0.5s ease all;
+    background-color: #fa1212; /* Color de fondo naranja más oscuro */
+}
+
+/* Botón de pagar */
+#carrito button:nth-of-type(2) {
+    color: black;
+    background-color: #1add6b; /* Color de fondo verde */
+}
+
+/* Cambia el color de fondo del botón de pagar al pasar el ratón por encima */
+#carrito button:nth-of-type(2):hover {
+    transition: 0.1s ease all;
+    background-color: #01bafb; /* Color de fondo verde más claro */
+}
+
+
+/* Estilos para el modal del formulario de pago */
+#formularioPago {
+    display: none; /* Oculto por defecto */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    overflow: auto; /* Permite desplazamiento si el contenido es más largo que la pantalla */
+}
+
+#formularioPago .modal-content {
+    background: hsl(0, 0%, 100%);
+    width: 25%;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#formularioPago .close {
+    position: absolute;
+    top: 2px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+#formularioPago .close:hover {
+    color: #ff4c4c;
+}
+
+#formularioPago form {
+    display: flex;
+    flex-direction: column;
+}
+
+#formularioPago form input, 
+#formularioPago form select, 
+#formularioPago form button {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+}
+
+#formularioPago form input:focus, 
+#formularioPago form select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+#formularioPago form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+#formularioPago form button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none;
+    /* Oculto por defecto */
+    position: fixed;
+    /* Fijo en la ventana */
+    z-index: 1001;
+    /* Encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    /* Habilita scroll si es necesario */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fondo semi-transparente */
+}
+
+/* Estilos para el contenido del modal */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* 15% desde arriba y centrado horizontalmente */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    /* Ancho del modal */
+    max-width: 400px;
+    /* Ancho máximo */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para el botón de cerrar */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
